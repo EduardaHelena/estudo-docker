@@ -8,7 +8,7 @@ services:
       POSTGRES_DB: "db"
       POSTGRES_HOST_AUTH_METHOD: "trust"
     volumes:
-      # Volume dos Dados
+      # Volume dos dados
       - dados:/var/lib/postgresql/data
       # Scripts
       - ./scripts:/scripts

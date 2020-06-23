@@ -45,18 +45,21 @@ services:
       - fila
     depends_on:
       - db
-  worker: 
-    image: python:3.6
+    environment: 
+      - DB_NAME=email_sender
+  worker:
+    build: worker
     volumes:
     # Worker
     - ./worker:/worker
     working_dir: /worker
-    command: bash ./app.sh
+    command: worker.py
     networks:
     - fila
     depends_on:
     - queue
     - app
+    
   queue:
     image: redis:3.2
     networks:
